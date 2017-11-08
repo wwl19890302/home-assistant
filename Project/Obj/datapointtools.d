@@ -1,0 +1,9 @@
+.\Obj\datapointtools.o: ..\Utils\dataPointTools.c
+.\Obj\datapointtools.o: ..\Utils\dataPointTools.h
+.\Obj\datapointtools.o: D:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\Obj\datapointtools.o: D:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\Obj\datapointtools.o: D:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\Obj\datapointtools.o: D:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\Obj\datapointtools.o: ..\Utils\common.h
+.\Obj\datapointtools.o: D:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\Obj\datapointtools.o: D:\Keil\ARM\ARMCC\bin\..\include\ctype.h
