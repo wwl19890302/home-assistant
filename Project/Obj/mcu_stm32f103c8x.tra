@@ -46,7 +46,7 @@
 ### ADS-LD Output File: '.\Obj\mcu_stm32f103c8x.axf'
 ### ADS-LD Command File: '.\Obj\mcu_stm32f103c8x.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Obj\mcu_stm32f103c8x.lnp', Handle=0x0000169C
+### Creating CmdFile '.\Obj\mcu_stm32f103c8x.lnp', Handle=0x00000694
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Obj\mcu_stm32f103c8x.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

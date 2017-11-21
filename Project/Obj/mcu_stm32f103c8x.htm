@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Obj\mcu_stm32f103c8x.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Obj\mcu_stm32f103c8x.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 24]: Last Updated: Mon Nov 06 16:53:23 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 24]: Last Updated: Tue Nov 21 11:46:18 2017
 <BR><P>
 <H3>Maximum Stack Usage =        268 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -77,12 +77,10 @@ Function Pointers
  <LI><a href="#[38]">fputc</a> from hal_uart.o(.text) referenced from printf8.o(i.__0printf$8)
  <LI><a href="#[60]">key1LongPress</a> from main.o(.text) referenced from main.o(.text)
  <LI><a href="#[5d]">key1ShortPress</a> from main.o(.text) referenced from main.o(.text)
- <LI><a href="#[62]">key2LongPress</a> from main.o(.text) referenced from main.o(.text)
+ <LI><a href="#[63]">key2LongPress</a> from main.o(.text) referenced from main.o(.text)
  <LI><a href="#[61]">key2ShortPress</a> from main.o(.text) referenced from main.o(.text)
- <LI><a href="#[65]">key3LongPress</a> from main.o(.text) referenced from main.o(.text)
- <LI><a href="#[63]">key3ShortPress</a> from main.o(.text) referenced from main.o(.text)
- <LI><a href="#[68]">key4LongPress</a> from main.o(.text) referenced from main.o(.text)
- <LI><a href="#[67]">key4ShortPress</a> from main.o(.text) referenced from main.o(.text)
+ <LI><a href="#[66]">key3LongPress</a> from main.o(.text) referenced from main.o(.text)
+ <LI><a href="#[65]">key3ShortPress</a> from main.o(.text) referenced from main.o(.text)
  <LI><a href="#[35]">main</a> from main.o(.text) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
 <P>
@@ -826,57 +824,54 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[61]"></a>key2ShortPress</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[61]"></a>key2ShortPress</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = key2ShortPress &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[62]"></a>key2LongPress</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[63]"></a>key2LongPress</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = key2LongPress &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledon
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[63]"></a>key3ShortPress</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[65]"></a>key3ShortPress</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = key3ShortPress &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledon
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[65]"></a>key3LongPress</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[66]"></a>key3LongPress</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = key3LongPress &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledon
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[67]"></a>key4ShortPress</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = key4ShortPress &rArr; __2printf
-</UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledon
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
+<P><STRONG><a name="[67]"></a>key4ShortPress</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledon
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
-</UL>
-<P><STRONG><a name="[68]"></a>key4LongPress</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = key4LongPress &rArr; __2printf
-</UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
+
+<P><STRONG><a name="[68]"></a>key4LongPress</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
-</UL>
-<P><STRONG><a name="[69]"></a>keyInit</STRONG> (Thumb, 164 bytes, Stack size 40 bytes, main.o(.text))
+
+<P><STRONG><a name="[69]"></a>keyInit</STRONG> (Thumb, 132 bytes, Stack size 40 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = keyInit &rArr; keyParaInit &rArr; timer2Init &rArr; NVIC_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
@@ -1093,7 +1088,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[70]"></a>ledGpioInit</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, hal_led.o(.text))
+<P><STRONG><a name="[70]"></a>ledGpioInit</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, hal_led.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = ledGpioInit &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
@@ -1106,24 +1101,27 @@ Global Symbols
 <P><STRONG><a name="[64]"></a>ledon</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, hal_led.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsEventProcess
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key4ShortPress
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3LongPress
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3ShortPress
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3LongPress
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3ShortPress
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2LongPress
 </UL>
 
-<P><STRONG><a name="[66]"></a>ledoff</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, hal_led.o(.text))
+<P><STRONG><a name="[62]"></a>ledoff</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, hal_led.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsEventProcess
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key4LongPress
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key4ShortPress
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3LongPress
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3LongPress
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3ShortPress
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2ShortPress
 </UL>
 
 <P><STRONG><a name="[176]"></a>ledDelay</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, hal_led.o(.text), UNUSED)
 
-<P><STRONG><a name="[99]"></a>gizwitsEventProcess</STRONG> (Thumb, 438 bytes, Stack size 56 bytes, gizwits_product.o(.text))
+<P><STRONG><a name="[99]"></a>gizwitsEventProcess</STRONG> (Thumb, 460 bytes, Stack size 56 bytes, gizwits_product.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = gizwitsEventProcess &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledon
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledoff
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsHandle
@@ -1251,7 +1249,7 @@ Global Symbols
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartWrite
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2LongPress
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2LongPress
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2ShortPress
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key1LongPress
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key1ShortPress
@@ -1664,9 +1662,9 @@ Global Symbols
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key4LongPress
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key4ShortPress
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3LongPress
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3ShortPress
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2LongPress
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3LongPress
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key3ShortPress
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2LongPress
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key2ShortPress
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key1LongPress
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key1ShortPress
@@ -1953,9 +1951,9 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[e2]"></a>_printf_core</STRONG> (Thumb, 988 bytes, Stack size 104 bytes, printf8.o(i._printf_core), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+<BR><BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$8
 </UL>

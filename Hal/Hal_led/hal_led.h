@@ -5,8 +5,8 @@
 #include <stm32f10x.h>
 #include "Hal_led/sys.h"
 
-#define led0	PBout(5)
-#define led1	PEout(5)
+#define relay0	PBout(5)
+#define led1	PCout(13)
 
 void ledGpioInit(void);
 void ledon(uint8_t index);

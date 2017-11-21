@@ -76,12 +76,14 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
           //user handle  开灯
 // 			led0 = 0;
 // 			led1 = 0;
+			ledon(0);//ledon(1);
         }
         else
         {
           //user handle    关灯
 // 			led0 = 1;
 // 			led1 = 1;
+			ledoff(0);//ledoff(1);
         }
         break;
 

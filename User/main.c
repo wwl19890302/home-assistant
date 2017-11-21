@@ -62,6 +62,7 @@ void key1LongPress(void)
 void key2ShortPress(void)
 {
     GIZWITS_LOG("KEY2 PRESS ,Soft AP mode\n");
+	ledoff(1);
     #if !MODULE_TYPE
     gizwitsSetMode(WIFI_SOFTAP_MODE);
     #endif
@@ -76,6 +77,7 @@ void key2LongPress(void)
 {
     //AirLink mode
     GIZWITS_LOG("KEY2 PRESS LONG ,AirLink mode\n");
+	ledon(1);
     #if !MODULE_TYPE
     gizwitsSetMode(WIFI_AIRLINK_MODE);
     #endif
@@ -88,8 +90,13 @@ void key2LongPress(void)
 */
 void key3ShortPress(void)
 {
+	static uint8_t i=0;
+	i++;
     GIZWITS_LOG("KEY3 PRESS ,led_color custom\n");
-    ledon(0);ledon(1);
+	if(i%2 == 0)
+		{ledon(0);currentDataPoint.valueLED_OnOff = LED_Color_VALUE1;}
+	else	{ledoff(0);currentDataPoint.valueLED_OnOff = LED_Color_VALUE0;}
+//    ledon(0);ledon(1);
 	currentDataPoint.valueLED_Color = LED_Color_VALUE0;
 }
 
@@ -137,9 +144,9 @@ void key4LongPress(void)
 void keyInit(void)
 {
     singleKey[0] = keyInitOne(RCC_APB2Periph_GPIOA, GPIOA, GPIO_Pin_0, key1ShortPress, key1LongPress);
-    singleKey[1] = keyInitOne(RCC_APB2Periph_GPIOE, GPIOE, GPIO_Pin_3, key2ShortPress, key2LongPress);
-	singleKey[2] = keyInitOne(RCC_APB2Periph_GPIOE, GPIOE, GPIO_Pin_2, key3ShortPress, key3LongPress);
-    singleKey[3] = keyInitOne(RCC_APB2Periph_GPIOE, GPIOE, GPIO_Pin_4, key4ShortPress, key4LongPress);
+    singleKey[1] = keyInitOne(RCC_APB2Periph_GPIOB, GPIOB, GPIO_Pin_10, key2ShortPress, key2LongPress);
+	singleKey[2] = keyInitOne(RCC_APB2Periph_GPIOB, GPIOB, GPIO_Pin_11, key3ShortPress, key3LongPress);
+//    singleKey[3] = keyInitOne(RCC_APB2Periph_GPIOE, GPIOE, GPIO_Pin_4, key4ShortPress, key4LongPress);
     keys.singleKey = (keyTypedef_t *)&singleKey;
     keyParaInit(&keys); 
 }
