@@ -81,7 +81,7 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 // 			led1 = 0;
 			relay_on(0);//ledon(1);
 			tmp_buf[0] = 1;
-			tmp_buf[29] = 0;
+			tmp_buf[28] = 0;
         }
         else
         {
@@ -90,7 +90,7 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 // 			led1 = 1;
 			relay_off(0);//ledoff(1);
 			tmp_buf[0] = 0;
-			tmp_buf[29] = 1;
+			tmp_buf[28] = 1;
         }
         break;
 
