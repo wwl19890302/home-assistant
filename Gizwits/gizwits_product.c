@@ -20,6 +20,8 @@
 #include "gizwits_product.h"
 #include "common.h"
 #include "Hal_led/Hal_led.h"
+#include "Hal_relay/Hal_relay.h"
+#include "Hal_nrf24l01/Hal_nrf24l01.h"
 
 static uint32_t timerMsCount;
 
@@ -49,6 +51,7 @@ dataPoint_t currentDataPoint;
 int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 {
   uint8_t i = 0;
+	  extern uint8_t tmp_buf[30];
   dataPoint_t *dataPointPtr = (dataPoint_t *)gizdata;
   moduleStatusInfo_t *wifiData = (moduleStatusInfo_t *)gizdata;
   protocolTime_t *ptime = (protocolTime_t *)gizdata;
@@ -76,14 +79,18 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
           //user handle  开灯
 // 			led0 = 0;
 // 			led1 = 0;
-			ledon(0);//ledon(1);
+			relay_on(0);//ledon(1);
+			tmp_buf[0] = 1;
+			tmp_buf[29] = 0;
         }
         else
         {
           //user handle    关灯
 // 			led0 = 1;
 // 			led1 = 1;
-			ledoff(0);//ledoff(1);
+			relay_off(0);//ledoff(1);
+			tmp_buf[0] = 0;
+			tmp_buf[29] = 1;
         }
         break;
 
@@ -94,22 +101,22 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
         {
           case LED_Color_VALUE0:
             //user handle
-			ledon(0);ledon(1);
+//			ledon(0);ledon(1);
 		  GIZWITS_LOG("\r\ncustom\r\n");
             break;
           case LED_Color_VALUE1:
             //user handle
-			ledon(0);ledoff(1);
+//			ledon(0);ledoff(1);
 			GIZWITS_LOG("\r\nyellow\r\n");
             break;
           case LED_Color_VALUE2:
             //user handle
-			ledoff(0);ledon(1);
+//			ledoff(0);ledon(1);
 		  GIZWITS_LOG("\r\nred\r\n");
             break;
           case LED_Color_VALUE3:
             //user handle
-			ledoff(0);ledoff(1);
+//			ledoff(0);ledoff(1);
 		  GIZWITS_LOG("\r\nblue\r\n");
             break;
           default:
@@ -181,6 +188,12 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
         break;
     }
   }
+  //此处添加发往从机控制代码，凡从机数据一律等待从机反应后更新到云服务器
+
+  NRF24L01_TX_Mode();
+  NRF24L01_TxPacket(tmp_buf);
+
+		
 
   return 0;
 }

@@ -41,3 +41,7 @@
 .\Obj\main.o: D:\Keil\ARM\ARMCC\bin\..\include\ctype.h
 .\Obj\main.o: ..\Hal\Hal_Led/hal_led.h
 .\Obj\main.o: ..\Hal\Hal_led/sys.h
+.\Obj\main.o: ..\Hal\Hal_relay/Hal_relay.h
+.\Obj\main.o: ..\Hal\Hal_led/sys.h
+.\Obj\main.o: ..\Hal\Hal_nrf24l01/Hal_nrf24l01.h
+.\Obj\main.o: ..\Hal\Hal_led/sys.h

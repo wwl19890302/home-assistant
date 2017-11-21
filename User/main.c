@@ -21,7 +21,11 @@
 #include "gizwits_product.h"
 #include "common.h"
 #include "Hal_Led/hal_led.h"
+#include "Hal_relay/Hal_relay.h"
+#include "Hal_nrf24l01/Hal_nrf24l01.h"
 
+uint8_t tmp_buf[30];	//需要发送给各从机的命令
+uint8_t tmp_buf2[30];//从各从机接收到的状态
 
 /**@name Key-related macro definition 
 * @{
@@ -62,7 +66,7 @@ void key1LongPress(void)
 void key2ShortPress(void)
 {
     GIZWITS_LOG("KEY2 PRESS ,Soft AP mode\n");
-	ledoff(1);
+	led_off(0);
     #if !MODULE_TYPE
     gizwitsSetMode(WIFI_SOFTAP_MODE);
     #endif
@@ -77,7 +81,7 @@ void key2LongPress(void)
 {
     //AirLink mode
     GIZWITS_LOG("KEY2 PRESS LONG ,AirLink mode\n");
-	ledon(1);
+	led_on(0);
     #if !MODULE_TYPE
     gizwitsSetMode(WIFI_AIRLINK_MODE);
     #endif
@@ -94,10 +98,10 @@ void key3ShortPress(void)
 	i++;
     GIZWITS_LOG("KEY3 PRESS ,led_color custom\n");
 	if(i%2 == 0)
-		{ledon(0);currentDataPoint.valueLED_OnOff = LED_Color_VALUE1;}
-	else	{ledoff(0);currentDataPoint.valueLED_OnOff = LED_Color_VALUE0;}
+		{relay_on(0);currentDataPoint.valueLED_OnOff = 0x01;}
+	else	{relay_off(0);currentDataPoint.valueLED_OnOff = 0x00;}
 //    ledon(0);ledon(1);
-	currentDataPoint.valueLED_Color = LED_Color_VALUE0;
+//	currentDataPoint.valueLED_Color = LED_Color_VALUE0;
 }
 
 /**
@@ -108,8 +112,8 @@ void key3ShortPress(void)
 void key3LongPress(void)
 {
     GIZWITS_LOG("KEY3 PRESS LONG ,led_color yellow\n");
-    ledon(0);ledoff(1);
-	currentDataPoint.valueLED_Color = LED_Color_VALUE1;
+//    led_on(0);led_off(1);
+//	currentDataPoint.valueLED_Color = LED_Color_VALUE1;
 }
 
 /**
@@ -120,8 +124,8 @@ void key3LongPress(void)
 void key4ShortPress(void)
 {
     GIZWITS_LOG("KEY4 PRESS ,led_color red\n");
-    ledoff(0);ledon(1);
-	currentDataPoint.valueLED_Color = LED_Color_VALUE2;
+//    led_off(0);led_on(1);
+//	currentDataPoint.valueLED_Color = LED_Color_VALUE2;
 }
 
 /**
@@ -132,8 +136,8 @@ void key4ShortPress(void)
 void key4LongPress(void)
 {
     GIZWITS_LOG("KEY4 PRESS LONG ,led_color blue\n");
-    ledoff(0);ledoff(1);
-	currentDataPoint.valueLED_Color = LED_Color_VALUE3;
+//    led_off(0);led_off(1);
+//	currentDataPoint.valueLED_Color = LED_Color_VALUE3;
 }
 
 /**
@@ -160,6 +164,7 @@ void keyInit(void)
 */
 int main(void)
 {
+	uint8_t FlagStatus = 0;
     SystemInit();
     
 	uartxInit();        //print serial port init
@@ -168,6 +173,8 @@ int main(void)
     gizwitsInit();
 
 	ledGpioInit();
+	relayGpioInit();
+	NRF24L01_Init();  
     keyInit();
     timerInit();
     uartInit();         //communication serial port init
@@ -182,6 +189,15 @@ int main(void)
         userHandle();
         
         gizwitsHandle((dataPoint_t *)&currentDataPoint);
+		
+
+		NRF24L01_RX_Mode();
+		NRF24L01_RxPacket(tmp_buf2);
+		if(tmp_buf2[0]==1 && tmp_buf2[29] == 0 && FlagStatus == 0)
+		{FlagStatus = 1;currentDataPoint.valueLED_Color = LED_Color_VALUE2; }
+		if(tmp_buf2[0]==0 && tmp_buf2[29] == 1 && FlagStatus == 1)
+		{FlagStatus = 0;currentDataPoint.valueLED_Color = LED_Color_VALUE0;}
+		
     }
 }
 

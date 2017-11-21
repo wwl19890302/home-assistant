@@ -39,3 +39,7 @@
 .\Obj\gizwits_product.o: D:\Keil\ARM\ARMCC\bin\..\include\ctype.h
 .\Obj\gizwits_product.o: ..\Hal\Hal_led/Hal_led.h
 .\Obj\gizwits_product.o: ..\Hal\Hal_led/sys.h
+.\Obj\gizwits_product.o: ..\Hal\Hal_relay/Hal_relay.h
+.\Obj\gizwits_product.o: ..\Hal\Hal_led/sys.h
+.\Obj\gizwits_product.o: ..\Hal\Hal_nrf24l01/Hal_nrf24l01.h
+.\Obj\gizwits_product.o: ..\Hal\Hal_led/sys.h
