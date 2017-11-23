@@ -191,7 +191,7 @@ int main(void)
         gizwitsHandle((dataPoint_t *)&currentDataPoint);
 		
 
-		NRF24L01_RX_Mode();
+		
 		NRF24L01_RxPacket(tmp_buf2);
 		if(tmp_buf2[0]==1 && tmp_buf2[28] == 0 && FlagStatus == 0)
 		{FlagStatus = 1;currentDataPoint.valueLED_Color = LED_Color_VALUE2; }

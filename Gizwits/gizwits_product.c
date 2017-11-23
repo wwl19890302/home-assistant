@@ -92,6 +92,10 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 			tmp_buf[0] = 0;
 			tmp_buf[28] = 1;
         }
+		  NRF24L01_TX_Mode();
+		NRF24L01_TxPacket(tmp_buf);
+		NRF24L01_RX_Mode();
+		
         break;
 
       case EVENT_LED_Color:
@@ -190,8 +194,7 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
   }
   //此处添加发往从机控制代码，凡从机数据一律等待从机反应后更新到云服务器
 
-  NRF24L01_TX_Mode();
-  NRF24L01_TxPacket(tmp_buf);
+
 
 		
 
