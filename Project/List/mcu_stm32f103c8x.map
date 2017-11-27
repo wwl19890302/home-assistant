@@ -609,10 +609,10 @@ Image Symbol Table
     debugCount                               0x20000049   Data           1  gizwits_protocol.o(.data)
     lastStatus                               0x2000004a   Data           2  gizwits_protocol.o(.data)
     .data                                    0x2000004c   Section        4  stdout.o(.data)
-    .bss                                     0x20000050   Section      144  main.o(.bss)
-    .bss                                     0x200000e0   Section       36  gizwits_product.o(.bss)
-    .bss                                     0x20000104   Section      448  gizwits_protocol.o(.bss)
-    rbBuf                                    0x20000286   Data          62  gizwits_protocol.o(.bss)
+    .bss                                     0x20000050   Section      148  main.o(.bss)
+    .bss                                     0x200000e4   Section       36  gizwits_product.o(.bss)
+    .bss                                     0x20000108   Section      448  gizwits_protocol.o(.bss)
+    rbBuf                                    0x2000028a   Data          62  gizwits_protocol.o(.bss)
     STACK                                    0x200002c8   Section     4096  startup_stm32f10x_md.o(STACK)
 
     Global Symbols
@@ -1077,12 +1077,12 @@ Image Symbol Table
     keys                                     0x20000029   Data           5  main.o(.data)
     keyCountTime                             0x20000037   Data           1  hal_key.o(.data)
     __stdout                                 0x2000004c   Data           4  stdout.o(.data)
-    tmp_buf                                  0x20000050   Data          30  main.o(.bss)
-    tmp_buf2                                 0x2000006e   Data          30  main.o(.bss)
-    singleKey                                0x2000008c   Data          84  main.o(.bss)
-    currentDataPoint                         0x200000e0   Data          36  gizwits_product.o(.bss)
-    gizwitsProtocol                          0x20000104   Data         370  gizwits_protocol.o(.bss)
-    pRb                                      0x20000276   Data          16  gizwits_protocol.o(.bss)
+    tmp_buf                                  0x20000050   Data          32  main.o(.bss)
+    tmp_buf2                                 0x20000070   Data          32  main.o(.bss)
+    singleKey                                0x20000090   Data          84  main.o(.bss)
+    currentDataPoint                         0x200000e4   Data          36  gizwits_product.o(.bss)
+    gizwitsProtocol                          0x20000108   Data         370  gizwits_protocol.o(.bss)
+    pRb                                      0x2000027a   Data          16  gizwits_protocol.o(.bss)
     __initial_sp                             0x200012c8   Data           0  startup_stm32f10x_md.o(STACK)
 
 
@@ -1179,10 +1179,9 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000050   0x00000090   Zero   RW          404    .bss                main.o
-    0x200000e0   0x00000024   Zero   RW          578    .bss                gizwits_product.o
-    0x20000104   0x000001c0   Zero   RW          608    .bss                gizwits_protocol.o
-    0x200002c4   0x00000004   PAD
+    0x20000050   0x00000094   Zero   RW          404    .bss                main.o
+    0x200000e4   0x00000024   Zero   RW          578    .bss                gizwits_product.o
+    0x20000108   0x000001c0   Zero   RW          608    .bss                gizwits_protocol.o
     0x200002c8   0x00001000   Zero   RW            1    STACK               startup_stm32f10x_md.o
 
 
@@ -1204,7 +1203,7 @@ Image component sizes
         72          8          0          0          0        791   hal_relay.o
        432         12          0          0          0       1450   hal_uart.o
         60          6          0          0          0        684   hal_watchdog.o
-       736        306          0          6        144      12877   main.o
+       736        306          0          6        148      12877   main.o
        220         20          0          0          0       1817   misc.o
        462          0          0          0          0       2439   ringbuffer.o
         36          8        236          0       4096        868   startup_stm32f10x_md.o
@@ -1221,7 +1220,7 @@ Image component sizes
     ----------------------------------------------------------------------
      22802       3406        326         76       4728     388879   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         2          0          0          0          4          0   (incl. Padding)
+         2          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 

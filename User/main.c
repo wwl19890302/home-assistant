@@ -24,8 +24,12 @@
 #include "Hal_relay/Hal_relay.h"
 #include "Hal_nrf24l01/Hal_nrf24l01.h"
 
-uint8_t tmp_buf[30];	//需要发送给各从机的命令
-uint8_t tmp_buf2[30];//从各从机接收到的状态
+uint8_t tmp_buf[32];	//需要发送给各从机的命令  
+/* 身份码    灯开关   热水器   电视  窗帘  空调  音乐  安防  插座 
+**  4B         9B       1B       1B    1B   5B     3B   5B     3B
+
+*/
+uint8_t tmp_buf2[32];//从各从机接收到的状态
 
 /**@name Key-related macro definition 
 * @{
