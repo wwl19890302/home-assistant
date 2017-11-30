@@ -142,6 +142,39 @@ extern "C" {
 /** Read-only data points Boolean and enumerated variables occupy byte size */
 #define COUNT_FAULT_BIT 1
 
+/*********************************************** 
+* 此处增加中控到子设备的协议，需移植
+*
+************************************************/
+typedef struct
+{
+	uint32_t	id;
+	uint8_t		lamp_Onoff[9];
+	uint8_t		heater_Onoff;
+	uint8_t		TV_Onoff;
+	uint8_t		curtain_Onoff;
+	uint8_t		air_Conditioner_Onoff;
+	uint8_t		air_Conditioner_Mode;
+	uint8_t		air_Conditioner_Temperature;
+	uint8_t		music_Onoff;
+	uint8_t		music_Volume;
+	uint8_t		music_Prevnext;
+	uint8_t		socket_Onoff[3];
+	
+} Assistant2subset;
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef enum
 {
     LED_Color_VALUE0 = 0,//自定义
