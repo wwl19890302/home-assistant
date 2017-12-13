@@ -80,8 +80,8 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 // 			led0 = 0;
 // 			led1 = 0;
 			relay_on(0);//ledon(1);
-			tmp_buf[0] = 1;
-			tmp_buf[28] = 0;
+			tmp_buf[5] = 1;
+			tmp_buf[6] = 0;
         }
         else
         {
@@ -89,8 +89,8 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 // 			led0 = 1;
 // 			led1 = 1;
 			relay_off(0);//ledoff(1);
-			tmp_buf[0] = 0;
-			tmp_buf[28] = 1;
+			tmp_buf[5] = 0;
+			tmp_buf[6] = 1;
         }
 		  NRF24L01_TX_Mode();
 		NRF24L01_TxPacket(tmp_buf);
