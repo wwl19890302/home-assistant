@@ -24,12 +24,14 @@
 #include "Hal_relay/Hal_relay.h"
 #include "Hal_nrf24l01/Hal_nrf24l01.h"
 
-uint8_t tmp_buf[32];	//需要发送给各从机的命令  
+void rx_data_pro(void);
+
+uint8_t tx_tmp_buf[32];	//需要发送给各从机的命令  
 /* 身份码    灯开关   热水器   电视  窗帘  空调  音乐  安防  插座 
 **  4B         9B       1B       1B    1B   5B     3B   5B     3B
-
+主机含有灯1操作
 */
-uint8_t tmp_buf2[32];//从各从机接收到的状态
+uint8_t rx_tmp_buf[32];//从各从机接收到的状态
 
 /**@name Key-related macro definition 
 * @{
@@ -168,7 +170,7 @@ void keyInit(void)
 */
 int main(void)
 {
-	uint8_t FlagStatus = 0;
+
     SystemInit();
     
 	uartxInit();        //print serial port init
@@ -195,13 +197,49 @@ int main(void)
         gizwitsHandle((dataPoint_t *)&currentDataPoint);
 		
 
-		
-		NRF24L01_RxPacket(tmp_buf2);
-		if(tmp_buf2[5]==1 && tmp_buf2[6] == 0 && FlagStatus == 0)
-		{FlagStatus = 1;currentDataPoint.valueLED_Color = LED_Color_VALUE2; }
-		if(tmp_buf2[5]==0 && tmp_buf2[6] == 1 && FlagStatus == 1)
-		{FlagStatus = 0;currentDataPoint.valueLED_Color = LED_Color_VALUE1;}
-		
+		if(NRF24L01_RxPacket(rx_tmp_buf)==0)//一旦接收到信息,则显示出来.
+        {
+            rx_data_pro();
+        }
+	
+    }
+}
+
+/* 子设备数据变动判断 */
+uint8_t subset_data_change_check(void)
+{
+	uint8_t state = 0;
+    if(rx_tmp_buf[3] == 1) //subset 1
+    {
+		currentDataPoint.valueLED_R = rx_tmp_buf[5];
+		currentDataPoint.valueLED_G = rx_tmp_buf[6];
+        state = 1;
+    }
+
+    if(state)
+    {
+        state = 0;
+        printf("subset1 data changed!\r\n");   //
+        return 1;   //control data change
+    }
+    else
+    {
+        printf("subset1 data not changed!\r\n");   //
+        return 0;   //control data not change
+    }
+}
+
+/* 接收子设备发来的数据，之后判断处理 */
+void rx_data_pro(void)
+{
+	uint8_t	state;
+
+    printf("%s\r\n",rx_tmp_buf);   //打印接收到的字符
+
+    state = subset_data_change_check();
+    if(state)   //report change to home assistant
+    {
+        state = 0;
     }
 }
 

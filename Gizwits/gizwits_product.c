@@ -51,7 +51,7 @@ dataPoint_t currentDataPoint;
 int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 {
   uint8_t i = 0;
-	  extern uint8_t tmp_buf[30];
+	  extern uint8_t tx_tmp_buf[32];
   dataPoint_t *dataPointPtr = (dataPoint_t *)gizdata;
   moduleStatusInfo_t *wifiData = (moduleStatusInfo_t *)gizdata;
   protocolTime_t *ptime = (protocolTime_t *)gizdata;
@@ -80,8 +80,8 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 // 			led0 = 0;
 // 			led1 = 0;
 			relay_on(0);//ledon(1);
-			tmp_buf[5] = 1;
-			tmp_buf[6] = 0;
+			tx_tmp_buf[5] = 1;
+			tx_tmp_buf[6] = 0;
         }
         else
         {
@@ -89,11 +89,11 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 // 			led0 = 1;
 // 			led1 = 1;
 			relay_off(0);//ledoff(1);
-			tmp_buf[5] = 0;
-			tmp_buf[6] = 1;
+			tx_tmp_buf[5] = 0;
+			tx_tmp_buf[6] = 1;
         }
 		  NRF24L01_TX_Mode();
-		NRF24L01_TxPacket(tmp_buf);
+		NRF24L01_TxPacket(tx_tmp_buf);
 		NRF24L01_RX_Mode();
 		
         break;
