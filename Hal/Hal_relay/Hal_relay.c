@@ -17,22 +17,21 @@
 void relayGpioInit(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	RCC_APB2PeriphClockCmd(relay0_rcc, ENABLE);
 
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = relay0_pin;
+    GPIO_Init(relay0_gpio, &GPIO_InitStructure);
 
-	relay0 = 0;
-
+	GPIO_ResetBits(relay0_gpio, relay0_pin);
 }
 
 void relay_on(uint8_t index)
 {
 	if(index == 0)
 	{
-		relay0 = 1;
+		GPIO_SetBits(relay0_gpio, relay0_pin);
 	}
 //	else {led1 = 0;}
 }
@@ -40,7 +39,7 @@ void relay_off(uint8_t index)
 {
 	if(index == 0)
 	{
-		relay0 = 0;
+		GPIO_ResetBits(relay0_gpio, relay0_pin);
 	}
 //	else {led1 = 1;}
 }

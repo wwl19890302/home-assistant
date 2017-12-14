@@ -100,12 +100,10 @@ void key2LongPress(void)
 */
 void key3ShortPress(void)
 {
-	static uint8_t i=0;
-	i++;
     GIZWITS_LOG("KEY3 PRESS ,led_color custom\n");
-	if(i%2 == 0)
-		{relay_on(0);currentDataPoint.valueLED_OnOff = 0x01;}
-	else	{relay_off(0);currentDataPoint.valueLED_OnOff = 0x00;}
+	if(GPIO_ReadOutputDataBit(relay0_gpio, relay0_pin))	//当前开
+		{relay_off(0);currentDataPoint.valueLED_OnOff = 0x00;}
+	else	{relay_on(0);currentDataPoint.valueLED_OnOff = 0x01;}
 //    ledon(0);ledon(1);
 //	currentDataPoint.valueLED_Color = LED_Color_VALUE0;
 }

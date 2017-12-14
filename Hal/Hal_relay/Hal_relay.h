@@ -5,7 +5,10 @@
 #include <stm32f10x.h>
 #include "Hal_led/sys.h"
 
-#define relay0	PBout(5)
+//relay define
+#define relay0_rcc      RCC_APB2Periph_GPIOB
+#define relay0_gpio     GPIOB
+#define relay0_pin      (GPIO_Pin_5)
 
 void relayGpioInit(void);
 void relay_on(uint8_t index);
